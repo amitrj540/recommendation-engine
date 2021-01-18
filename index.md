@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+# Recommendation Engine
+A product recommendation is just like a filtering system that seeks to predict and show the items that a user would like to purchase. It may not be entirely accurate, but if it shows what user would like then basically it is doing its job right.
+## Dataset Information
+*All_beauty* dataset is taken from Per-category data released as Amazon review data in 2018.<br>
+The dataset is divided into two parts:
+- All_Beauty.json.gz 
+  This dataset contains reviews (371,345 reviews).<br>
+  **features used**<br>
+  * overall
+  * verified
+  * reviewerID
+  * asin
+  * reviewerName 	
+  * reviewText 	
+  * summary 	
+  * unixReviewTime 	
+  * vote
+  
+- meta_All_Beauty.json.gz
+  This dataset contains  metadata (32,992 products)<br>
+  **features used**<br>
+  * title
+  * description
+  * also_buy
+  * brand
+  * rank
+  * also_view
+  * details
+  * similar_item
+  * price
+  * asin
 
-You can use the [editor on GitHub](https://github.com/amitrj540/recommendation-engine/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Project Goals
+1.  Perform EDA on the dataset
+2.  Data Cleaning & Preprocessing
+3.  Perform Sentiment Analysis
+4.  Perform Popularity based recommendation
+5.  Apply Content Based filtering
+6.  Apply Model-based collaborative filtering
+7.  Apply Collaberative filtering (Item-Item recommedation)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Citation
+**Justifying recommendations using distantly-labeled reviews and fined-grained aspects**
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/amitrj540/recommendation-engine/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Jianmo Ni, Jiacheng Li, Julian McAuley
+Empirical Methods in Natural Language Processing (EMNLP), 2019
