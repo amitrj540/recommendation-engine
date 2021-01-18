@@ -29,11 +29,7 @@ The dataset is divided into two parts:
   * similar_item
   * price
   * asin
-### Citation
-**Justifying recommendations using distantly-labeled reviews and fined-grained aspects**
 
-Jianmo Ni, Jiacheng Li, Julian McAuley
-Empirical Methods in Natural Language Processing (EMNLP), 2019
 ## Project Goals
 1.  Perform EDA on the dataset
 2.  Data Cleaning & Preprocessing
@@ -42,3 +38,9 @@ Empirical Methods in Natural Language Processing (EMNLP), 2019
 5.  Apply Content Based filtering
 6.  Apply Model-based collaborative filtering
 7.  Apply Collaberative filtering (Item-Item recommedation)
+
+### Citation
+**Justifying recommendations using distantly-labeled reviews and fined-grained aspects**
+
+Jianmo Ni, Jiacheng Li, Julian McAuley
+Empirical Methods in Natural Language Processing (EMNLP), 2019
