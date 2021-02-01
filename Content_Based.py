@@ -41,13 +41,18 @@ def get_recommendations(title, cosine_sim=cosine_sim, lim=5, min_rate=2):
 
     prod_indices = [i[0] for i in sim_scores]
     temp = df.iloc[prod_indices]
-    temp = temp[(temp['price']>= price-lim) & (temp['price']<= price+lim) & (temp['overall']>= min_rate)][['asin', 'title', 'price', 'overall']]
-
-    result = temp.drop(['price','overall'], axis = 1, index = False) 
-    return result
+    temp = temp[(temp['price']>= price-lim) & (temp['price']<= price+lim) & (temp['overall']>= min_rate)][['asin', 'title', 'price', 'overall']]     
+    return temp
 
 #tuning param for price is lim=5
 #tuning param for rating is min_rate=2
 
 def content_based_recommendation():
-    return get_recommendations('B00P8ATTZE',min_rate=5)
+    print("Enter Product Details: (ProductID)")
+    userResponse = input()
+    checkData = df['asin'].tolist()
+    if(userResponse in checkData):
+        return get_recommendations(userResponse,min_rate=5)
+    else:
+        return "No Such Products! "
+    return 0
