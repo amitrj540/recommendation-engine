@@ -10,6 +10,7 @@ from surprise.model_selection import train_test_split
 
 # Getting the new dataframe which contains users who has given 50 or more ratings
 def item_item_collaborative(df_path, limit):
+    print('Loading data...')
     df = pd.read_json(df_path)
     new_df = df[df['review_count'] >= limit]
     # Reading the dataset
@@ -29,7 +30,8 @@ def item_item_collaborative(df_path, limit):
     c = acc_score[0][0]
     print(f"Final C = {c}\nTest RMSE : {acc_score[0][1]}")
     final_knn = KNNWithMeans(k=c, sim_options={'name': 'pearson_baseline', 'user_based': False})
-    final_knn.fit(data)
+    trainset = data.build_full_trainset()
+    final_knn.fit(trainset)
 
     print("Storing model in pickle file ...")
     final_knn_file = 'final_knn.pkl'
