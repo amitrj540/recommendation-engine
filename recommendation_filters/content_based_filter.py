@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-def cbf_data(df_path='All_Beauty_One_final.json.gz'):
+def cbf_data(df_path='final.json.gz'):
     """
     Generate data for content based filtering
     input :

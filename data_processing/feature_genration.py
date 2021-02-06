@@ -41,7 +41,7 @@ def nb_features(df_ser):
     return pd.DataFrame(nb_model_prediction, columns=['negative_prob', 'neutral_prob', 'positive_prob'])
 
 
-def all_feature(df_path = 'All_Beauty_clean.json.gz'):
+def all_feature(df_path = 'All_Beauty_clean.json.gz', dest_path='/data/raw/clean_reviews.json.gz'):
     df = pd.read_json(df_path)
     req_features = ['asin', 'reviewerID', 'reviewText', 'summary']
     feat_df = df[req_features]
@@ -49,4 +49,5 @@ def all_feature(df_path = 'All_Beauty_clean.json.gz'):
     feat_df = pd.concat([feat_df, svc_features(df['reviewText'])], axis=1)
     feat_df = pd.concat([feat_df, nb_features(df['summary'])], axis=1)
     feat_df.drop(req_features, inplace=True)
+    feat_df.to_json(dest_path, compression='gzip')
     return feat_df
