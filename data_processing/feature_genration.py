@@ -1,11 +1,9 @@
-#from text_processing import stem_text, rem_stopwords, text_clean
+from data_processing.text_processing import stem_text, rem_stopwords, text_clean
 import pandas as pd
 import pickle
 
 def review_count(df):
     return df['asin'].map(dict(df.groupby('asin').count()['reviewerID']))
-
-
 
 def svc_features(df_ser):
     print('Loading models...')
@@ -24,7 +22,8 @@ def svc_features(df_ser):
     ngram = ngram_vect.transform(df_ser)
     svc_pred = svc_model.predict(ngram)
 
-    return svc_pred.to_frame(name='reviewText_senti')
+    return pd.DataFrame(data = svc_pred, columns = ['reviewText_senti'])
+    #return svc_pred.to_frame(name='reviewText_senti')
 
 
 def nb_features(df_ser):
@@ -40,13 +39,14 @@ def nb_features(df_ser):
     return pd.DataFrame(nb_model_prediction, columns=['negative_prob', 'neutral_prob', 'positive_prob'])
 
 
-def all_feature(df_path = 'All_Beauty_clean.json.gz', dest_path='/data/raw/clean_reviews.json.gz'):
+def all_feature(df_path = 'All_Beauty_clean.json.gz', dest_path='./data/processed/feat_reviews.json.gz'):
     df = pd.read_json(df_path)
     req_features = ['asin', 'reviewerID', 'reviewText', 'summary']
     feat_df = df[req_features]
-    feat_df['review_count'] = review_count(df[['asin', 'reviewerID']])
-    feat_df = pd.concat([feat_df, svc_features(df['reviewText'])], axis=1)
+    feat_df['review_count'] = review_count(df.loc[:,['asin', 'reviewerID']])
+    feat_df = pd.concat([feat_df, svc_features(df.loc[:, ['reviewText']])], axis=1)
     feat_df = pd.concat([feat_df, nb_features(df['summary'])], axis=1)
-    feat_df.drop(req_features, inplace=True)
-    feat_df.to_json(dest_path, compression='gzip')
+    feat_df.drop(['reviewerID', 'reviewText', 'summary'], inplace=True, axis=1)
+    df.merge(feat_df, on='asin')
+    df.to_json(dest_path, compression='gzip')
     return feat_df
