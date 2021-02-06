@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from text_processing import stem_text, rem_stopwords, text_clean
+#from text_processing import stem_text, rem_stopwords, text_clean
 import pandas as pd
 import pickle
 

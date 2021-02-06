@@ -1,5 +1,5 @@
 from data_processing.text_processing import stem_text, rem_stopwords, text_clean
-from sampler_sentiment_generator import sentiment_generator, sampler
+from models.sampler_sentiment_generator import sentiment_generator, sampler
 import pandas as pd
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split

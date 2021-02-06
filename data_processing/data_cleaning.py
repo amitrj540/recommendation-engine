@@ -1,4 +1,4 @@
-from text_processing import text_clean
+from data_processing.text_processing import stem_text, rem_stopwords, text_clean
 import pandas as pd
 import numpy as np
 
@@ -32,13 +32,19 @@ def meta_clean(src_path, dest_path):
     features_not_req = ['category', 'tech1','fit','tech2','feature','date',
                         'image','main_cat', 'also_buy', 'rank', 'also_view',
                         'similar_item', 'details']
+
     df.drop(features_not_req, axis = 1, inplace = True)
 
-    df['price'] = df.loc[:, 'price'].apply(lambda x: x.strip(' $') if x is not None else np.nan)
+    apply_func = lambda x: np.nan if (isinstance(x, list) and len(x) == 0) else (np.nan if x == '' else x)
+
+    for col in df.columns:
+        df[col] = df[col].apply(apply_func)
+
+    df['price'] = df.loc[:, 'price'].apply(lambda x: str(x).strip(' $') if x is not None else np.nan)
     price_filter = lambda x: (float(x) if len(x) <= 6 else np.nan) if x is not None and not isinstance(x, float) else x
     df['price'] = df.loc[:, 'price'].apply(price_filter).astype(float)
 
-    desc_filter = lambda x: " ".join(x) if x is not None else np.nan
+    desc_filter = lambda x: (" ".join(x) if isinstance(x, list) else x) if x is not None else np.nan
     df['description'] = df.loc[:, 'description'].apply(desc_filter)
 
     df.dropna(subset=['title'], inplace=True)
