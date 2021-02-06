@@ -22,7 +22,6 @@ def main():
     svd_model = tsvd_model(df_path='/data/processed/final.json.gz',sample_frac=0.05, idx=None, col = 'reviewerID', val='positive_prob')
     modb_ip = input('Enter product asin : ')
     collaborative_modb(product=modb_ip, model=svd_model, corr_thresh=0.5)
-
     item_item_collaborative(rev_clean_path, limit=5)
 
 if __name__ == "__main__":
