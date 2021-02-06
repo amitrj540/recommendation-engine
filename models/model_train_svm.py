@@ -76,11 +76,11 @@ def lin_SVC(df_path='All_Beauty_clean.json.gz', test_reviews=None):
         print(f"{item[0]} >> {item[1]}")
 
     print("Storing vectorizer and model in pickle file ...")
-    ngram_vec_file = 'ngram_vec.pkl'
+    ngram_vec_file = './models/pickle_files/svc/ngram_vec.pkl'
     pickle.dump(ngram_vectorizer, open(ngram_vec_file, 'wb'))
 
     print("Storing model in pickle file ...")
-    final_svc_file = 'final_Lin_SVC.pkl'
+    final_svc_file = './models/pickle_files/svc/final_Lin_SVC.pkl'
     pickle.dump(final_svc, open(final_svc_file, 'wb'))
     print('Done.')
     return True

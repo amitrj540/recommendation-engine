@@ -9,8 +9,8 @@ def review_count(df):
 
 def svc_features(df_ser):
     print('Loading models...')
-    ngram_vect = pickle.load(open('/models/ngram_vect.pkl', 'rb'))
-    svc_model = pickle.load(open('/models/final_svc.pkl', 'rb'))
+    ngram_vect = pickle.load(open('./models/pickle_files/svc/ngram_vec.pkl', 'rb'))
+    svc_model = pickle.load(open('./models/pickle_files/svc/final_Lin_SVC.pkl', 'rb'))
 
     print('Cleaning text...')
     df_ser = df_ser.apply(text_clean)
@@ -29,9 +29,9 @@ def svc_features(df_ser):
 
 def nb_features(df_ser):
     print('Loading models...')
-    count_vect = pickle.load(open('count_vect_file.pkl', 'rb'))
-    tfidf_vect = pickle.load(open('tfidf_vect_file.pkl', 'rb'))
-    nb_model = pickle.load(open('final_mnb_file.pkl', 'rb'))
+    count_vect = pickle.load(open('./models/pickle_files/nb/count_vect_file.pkl', 'rb'))
+    tfidf_vect = pickle.load(open('./models/pickle_files/nb/tfidf_vect_file.pkl', 'rb'))
+    nb_model = pickle.load(open('./models/pickle_files/nb/final_nb_file.pkl', 'rb'))
 
     print('Cleaning text...')
     df_ser = df_ser.apply(text_clean)

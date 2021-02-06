@@ -72,15 +72,15 @@ def nb_model(df_path='All_Beauty_clean.json.gz', test_reviews=None):
         print(f"{item[0]} >> {item[1]}")
 
     print("Storing CountVectorizer")
-    count_vect_file = 'count_vect_file.pkl'
+    count_vect_file = './models/pickle_files/nb/count_vect_file.pkl'
     pickle.dump(count_vectorizer, open(count_vect_file, 'wb'))
 
     print("Storing TfidfTransformer")
-    tfidf_vect_file = 'tfidf_vect_file.pkl'
+    tfidf_vect_file = './models/pickle_files/nb/tfidf_vect_file.pkl'
     pickle.dump(tfidf_transformer, open(tfidf_vect_file, 'wb'))
 
     print("Storing Final Model")
-    final_mnb_file = 'final_mnb_file.pkl'
-    pickle.dump(final_model, open(final_mnb_file, 'wb'))
+    final_nb_file = './models/pickle_files/nb/final_nb_file.pkl'
+    pickle.dump(final_model, open(final_nb_file, 'wb'))
     print('Done.')
     return True

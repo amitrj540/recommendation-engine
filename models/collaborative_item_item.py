@@ -34,7 +34,7 @@ def item_item_collaborative(df_path, limit):
     final_knn.fit(trainset)
 
     print("Storing model in pickle file ...")
-    final_knn_file = 'final_knn.pkl'
+    final_knn_file = './models/pickle_files/knn/final_knn.pkl'
     pickle.dump(final_knn, open(final_knn_file, 'wb'))
     print('Done.')
     return True
