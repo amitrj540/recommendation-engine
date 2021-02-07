@@ -4,6 +4,7 @@ from models import collaborative_item_item, nb, lin_svc,\
     sampler_sentiment_generator, collaborative_model_based
 import pickle
 
+
 def main():
     rev_path = './data/raw/All_Beauty.json.gz'
     rev_clean_path = './data/processed/clean_reviews.json.gz'
@@ -22,14 +23,14 @@ def main():
     idx = content_based_filter.indices(df)
     cosim = content_based_filter.cosine_sim(df['description'])
     cbf_ip = input('Enter product asin : ')
-    cbf_res=content_based_filter.recommend(prod_asin=cbf_ip, cosine_sim = cosim, indices= idx, cbf_df = df, lim=5, min_rate=2)
+    cbf_res = content_based_filter.recommend(prod_asin=cbf_ip, cosine_sim=cosim, indices=idx, cbf_df=df, lim=5, min_rate=2)
     print(cbf_res)
-    svd_model = collaborative_model_based.train(df_path=final_df,sample_frac=0.01, idx='asin', col = 'reviewerID', val='positive_prob')
+    svd_model = collaborative_model_based.train(df_path=final_df, sample_frac=0.01, idx='asin', col='reviewerID', val='positive_prob')
     modb_ip = input('Enter product asin : ')
     modb_res = collaborative_model_based.recommend(product=modb_ip, model=svd_model, corr_thresh=0.5)
     print(modb_res)
     collaborative_item_item.train(final_df, limit=5)
 
+
 if __name__ == "__main__":
     main()
-

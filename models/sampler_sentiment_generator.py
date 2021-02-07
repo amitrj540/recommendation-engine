@@ -1,4 +1,6 @@
 import pandas as pd
+
+
 def sentiment_generator(df_ser):
     """
     Takes rating Series as input and returns sentiment DataFrame.
@@ -7,6 +9,7 @@ def sentiment_generator(df_ser):
     """
     senti = lambda x: -1 if x in [1, 2] else (0 if x == 3 else 1)
     return df_ser.apply(senti).to_frame(name='sentiment')
+
 
 def sampler(df):
     """
