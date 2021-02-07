@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 import pickle
 
 
-def lin_SVC(df_path='All_Beauty_clean.json.gz', test_reviews=None):
+def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     """
     Trains LinearSVC model on balanced dataset of Amazon
     params:

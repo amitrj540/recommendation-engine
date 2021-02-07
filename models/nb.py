@@ -8,7 +8,7 @@ from sklearn.naive_bayes import MultinomialNB, BernoulliNB
 import pickle
 
 
-def nb_model(df_path='All_Beauty_clean.json.gz', test_reviews=None):
+def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     """
     Trains Naïve Bayes model on balanced dataset of Amazon
     params:

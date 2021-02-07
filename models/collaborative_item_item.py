@@ -9,7 +9,7 @@ from surprise.model_selection import train_test_split
 
 
 # Getting the new dataframe which contains users who has given 50 or more ratings
-def item_item_collaborative(df_path, limit):
+def train(df_path, limit):
     print('Loading data...')
     df = pd.read_json(df_path)
     new_df = df[df['review_count'] >= limit]

@@ -16,7 +16,7 @@ def tsvd_model(df_path,sample_frac, idx='asin', col = 'reviewerID', val='positiv
     print(pivot_df.index)
     return (correlation_matrix, pivot_df.index)
 
-def collaborative_modb(product, model=None, df_path=None, sample_frac=0.05,corr_thresh=0.5):
+def recommend(product, model=None, df_path=None, sample_frac=0.05,corr_thresh=0.5):
     if model is None:
         correlation_matrix, product_names = tsvd_model(df_path, sample_frac)
     else:

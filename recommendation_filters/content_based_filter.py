@@ -23,7 +23,7 @@ def cosine_sim(df):
     tfidf_mat = tfidf.fit_transform(df)
     return linear_kernel(tfidf_mat, tfidf_mat)
 
-def cbf_recommendation(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
+def recommend(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
     """
     tuning param for price is lim=5
     tuning param for rating is min_rate=2

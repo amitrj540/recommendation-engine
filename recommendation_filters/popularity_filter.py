@@ -4,7 +4,7 @@ import pandas as pd
 # avg_rev_count = df['review_count'].mean()
 # avg_rating = df['overall'].mean()
 # avg_sentiment = df['reviewText_senti'].mean()
-def popularity(df_path, rev_count, rating, sentiment):
+def recommend(df_path, rev_count, rating, sentiment):
     df = pd.read_json(df_path)
     df = df.loc[:, ['asin', 'overall', 'review_count', 'reviewText_senti', 'positive_prob']]
     # df1 = df.loc[:, ['asin', 'title']].drop_duplicates().reset_index().drop('index', axis=1)
