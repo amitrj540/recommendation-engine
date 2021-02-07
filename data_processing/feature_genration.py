@@ -23,7 +23,6 @@ def svc_features(df_ser):
     svc_pred = svc_model.predict(ngram)
 
     return pd.DataFrame(data = svc_pred, columns = ['reviewText_senti'])
-    #return svc_pred.to_frame(name='reviewText_senti')
 
 
 def nb_features(df_ser):
@@ -45,7 +44,7 @@ def all_feature(df_path = 'All_Beauty_clean.json.gz', dest_path='./data/processe
     feat_df = df[req_features]
     feat_df['review_count'] = review_count(df.loc[:,['asin', 'reviewerID']])
     feat_df = pd.concat([feat_df, svc_features(df.loc[:, ['reviewText']])], axis=1)
-    feat_df = pd.concat([feat_df, nb_features(df['summary'])], axis=1)
+    feat_df = pd.concat([feat_df, nb_features(df.loc[:, ['summary']])], axis=1)
     feat_df.drop(['reviewerID', 'reviewText', 'summary'], inplace=True, axis=1)
     df.merge(feat_df, on='asin')
     df.to_json(dest_path, compression='gzip')

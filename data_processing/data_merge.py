@@ -18,4 +18,4 @@ def final_data(dest_path, review_path=None, meta_path=None,
     one_df = one_df[features]
     one_df.drop_duplicates(subset=['asin', 'reviewerID'], inplace=True)
     one_df.to_json(dest_path, compression='gzip')
-    return True
+    return one_df

@@ -37,4 +37,4 @@ def train(df_path, limit):
     final_knn_file = './models/pickle_files/knn/final_knn.pkl'
     pickle.dump(final_knn, open(final_knn_file, 'wb'))
     print('Done.')
-    return True
+    return final_knn

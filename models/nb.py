@@ -83,4 +83,4 @@ def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     final_nb_file = './models/pickle_files/nb/final_nb_file.pkl'
     pickle.dump(final_model, open(final_nb_file, 'wb'))
     print('Done.')
-    return True
+    return (count_vectorizer, tfidf_transformer, final_model)

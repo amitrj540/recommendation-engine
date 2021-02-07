@@ -63,4 +63,4 @@ def meta_clean(src_path, dest_path):
     df.reset_index(inplace=True)
     df.drop('index', axis = 1,inplace=True)
     df.to_json(dest_path,compression='gzip')
-    return True
+    return df

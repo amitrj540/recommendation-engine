@@ -83,4 +83,4 @@ def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     final_svc_file = './models/pickle_files/svc/final_Lin_SVC.pkl'
     pickle.dump(final_svc, open(final_svc_file, 'wb'))
     print('Done.')
-    return True
+    return (ngram_vectorizer, final_svc)

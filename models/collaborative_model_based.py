@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.decomposition import TruncatedSVD
 # Import the dataset and give the column names
-def tsvd_model(df_path,sample_frac, idx='asin', col = 'reviewerID', val='positive_prob'):
+def train(df_path,sample_frac, idx='asin', col = 'reviewerID', val='positive_prob'):
     df = pd.read_json(df_path)
     df = df.sample(frac=sample_frac)
     # Matrix with row per 'item' and column per 'user'

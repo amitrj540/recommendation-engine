@@ -24,7 +24,7 @@ def main():
     cbf_ip = input('Enter product asin : ')
     cbf_res=content_based_filter.recommend(prod_asin=cbf_ip, cosine_sim = cosim, indices= idx, cbf_df = df, lim=5, min_rate=2)
     print(cbf_res)
-    svd_model = collaborative_model_based.tsvd_model(df_path=final_df,sample_frac=0.01, idx='asin', col = 'reviewerID', val='positive_prob')
+    svd_model = collaborative_model_based.train(df_path=final_df,sample_frac=0.01, idx='asin', col = 'reviewerID', val='positive_prob')
     modb_ip = input('Enter product asin : ')
     modb_res = collaborative_model_based.recommend(product=modb_ip, model=svd_model, corr_thresh=0.5)
     print(modb_res)
