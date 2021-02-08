@@ -49,7 +49,7 @@ def all_feature(df_path='All_Beauty_clean.json.gz', dest_path='./data/processed/
     req_features = ['asin', 'reviewerID', 'reviewText', 'summary']
     feat_df = df[req_features]
     #feat_df['review_count'] = 0
-    feat_df.loc[:, 'review_count'] = review_count(df[['asin', 'reviewerID']])
+    feat_df.loc[:, 'review_count'] = df['asin'].map(dict(df.groupby('asin').count()['reviewerID']))
     feat_df = pd.concat([feat_df, svc_features(df['reviewText'])], axis=1)
     feat_df = pd.concat([feat_df, nb_features(df['summary'])], axis=1)
     feat_df.drop(['asin', 'reviewerID', 'reviewText', 'summary'], inplace=True, axis=1)
