@@ -48,7 +48,6 @@ def all_feature(df_path='All_Beauty_clean.json.gz', dest_path='./data/processed/
     df = pd.read_json(df_path)
     req_features = ['asin', 'reviewerID', 'reviewText', 'summary']
     feat_df = df[req_features]
-<<<<<<< HEAD
     #feat_df['review_count'] = 0
     feat_df.loc[:, 'review_count'] = review_count(df[['asin', 'reviewerID']])
     feat_df = pd.concat([feat_df, svc_features(df['reviewText'])], axis=1)
@@ -58,12 +57,4 @@ def all_feature(df_path='All_Beauty_clean.json.gz', dest_path='./data/processed/
     final.to_json(dest_path, compression='gzip')
     del df
     return final
-=======
-    feat_df['review_count'] = review_count(df.loc[:, ['asin', 'reviewerID']])
-    feat_df = pd.concat([feat_df, svc_features(df['reviewText'])], axis=1)
-    feat_df = pd.concat([feat_df, nb_features(df['summary'])], axis=1)
-    feat_df.drop(['reviewerID', 'reviewText', 'summary'], inplace=True, axis=1)
-    df.merge(feat_df, on='asin')
-    df.to_json(dest_path, compression='gzip')
-    return feat_df
->>>>>>> 154749b62e1b110e1fd3d9e2e6a177d474035860
+
