@@ -1,4 +1,4 @@
-from data_processing.text_processing import stem_text, rem_stopwords, text_clean
+from data_processing.text_processing import text_clean
 from models.sampler_sentiment_generator import sentiment_generator, sampler
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -48,11 +48,13 @@ def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     model_MultinomialNB = MultinomialNB().fit(X_train_vec, y_train)
     mnb_acc = accuracy_score(y_test, model_MultinomialNB.predict(X_test_vec))
     print(f"Accuracy Score : {mnb_acc}")
+    del model_MultinomialNB
 
     print('Bernoulli Naïve Bayes model Training...')
     model_BernoulliNB = BernoulliNB().fit(X_train_vec, y_train)
     bnb_acc = accuracy_score(y_test, model_BernoulliNB.predict(X_test_vec))
     print(f"Accuracy Score : {bnb_acc}")
+    del model_BernoulliNB
 
     if mnb_acc > bnb_acc:
         print('Training Multinomial Naïve Bayes model as final model')
@@ -82,5 +84,8 @@ def train(df_path='All_Beauty_clean.json.gz', test_reviews=None):
     print("Storing Final Model")
     final_nb_file = './models/pickle_files/nb/final_nb_file.pkl'
     pickle.dump(final_model, open(final_nb_file, 'wb'))
+    # del count_vectorizer
+    # del tfidf_transformer
+    # del final_model
     print('Done.')
     return (count_vectorizer, tfidf_transformer, final_model)

@@ -21,11 +21,13 @@ def train(df_path, sample_frac, idx='asin', col='reviewerID', val='positive_prob
 
 def recommend(product, model=None, df_path=None, sample_frac=0.05, corr_thresh=0.5):
     if model is None:
-        correlation_matrix, pivot_idx = tsvd_model(df_path, sample_frac)
+        correlation_matrix, pivot_idx = train(df_path, sample_frac)
     else:
         correlation_matrix, pivot_idx = model
 
     product_names = list(pivot_idx)
+    if product not in product_names:
+        return []
     product_id = product_names.index(product)
     correlation_product_id = correlation_matrix[product_id]
     recom = list(pivot_idx[correlation_product_id > corr_thresh])

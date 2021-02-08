@@ -8,7 +8,6 @@ nltk.download('stopwords')
 def stem_text(text):
     """
     PorterStemmer is used for Stemming.
-    >>> stem_text(text) -> str
     """
     stemmer = PorterStemmer()
     return " ".join([stemmer.stem(word) for word in text.split()])
@@ -26,7 +25,6 @@ def text_clean(text, reg_no_space="[.;:!\'?,\"()[]#]",
     Default params :
     reg_no_space = "[.;:!\'?,\"()\[\]#]"
     reg_space = "(<br\s*/><br\s*/>)|(\-)|(\/)|(\n)|(\t)|(;)|(&amp)"
-    >>>text_processing(text) -> str
     """
     no_space = re.compile(reg_no_space)
     space = re.compile(reg_space)

@@ -35,6 +35,8 @@ def recommend(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
     tuning param for rating is min_rate=2
     """
     df = cbf_df
+    if prod_asin not in indices:
+        return []
     idx = indices[prod_asin]
     price = df.iloc[idx]['price']
     sim_scores = list(enumerate(cosine_sim[idx]))
@@ -42,9 +44,8 @@ def recommend(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
 
     # sim_scores = sim_scores[1:11]
-
     prod_indices = [i[0] for i in sim_scores]
     temp = df.iloc[prod_indices]
 
     return temp[(temp['price'] >= price-lim) & (temp['price'] <= price+lim) &
-                (temp['overall'] >= min_rate)][['asin', 'title', 'price', 'overall']]
+                (temp['overall'] >= min_rate)]['asin'].tolist()

@@ -1,5 +1,3 @@
-from data_processing.data_cleaning import reviews_clean, meta_clean
-
 import pandas as pd
 
 
@@ -18,7 +16,7 @@ def final_data(dest_path, review_path=None, meta_path=None,
 
     one_df = df_review.merge(df_meta, on='asin')
     one_df = one_df[one_df['verified']]
-    features = ['asin', 'reviewerID', 'verified', 'overall', 'review_count', 'summary', 'reviewText']
+    features = ['asin', 'reviewerID', 'description', 'title', 'price', 'overall', 'review_count', 'reviewText_senti', 'positive_prob']
     one_df = one_df[features]
     one_df.drop_duplicates(subset=['asin', 'reviewerID'], inplace=True)
     one_df.to_json(dest_path, compression='gzip')

@@ -18,4 +18,4 @@ def recommend(df_path, rev_count, rating, sentiment):
     # Most Popular Products
     # most_pop = best_prod.groupby('asin').mean().sort_values('positive_prob', ascending=False)
     # most_pop = df1.merge(most_pop, on='asin', index=False)
-    return best_prod.index
+    return best_prod.index.tolist()
