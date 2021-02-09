@@ -11,7 +11,7 @@ A product recommendation is just like a filtering system that seeks to predict a
 *All_beauty* dataset is taken from Per-category data released as Amazon review data in 2018.<br>
 The dataset is divided into two parts:
 
-* All_Beauty.json.gz 
+* All_Beauty.json.gz <br>
   This dataset contains reviews (371,345 reviews).<br>
   | features | about |
   | --- | --- |
@@ -25,7 +25,7 @@ The dataset is divided into two parts:
   | unixReviewTime | time of the review (unix time) |
   | vote | helpful votes of the review |
   
-* meta_All_Beauty.json.gz
+* meta_All_Beauty.json.gz<br>
   This dataset contains  metadata (32,992 products)<br>
   | features | about |
   | --- | --- |
