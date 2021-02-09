@@ -8,6 +8,13 @@ import pandas as pd
 # avg_sentiment = df['reviewText_senti'].mean()
 #0.44
 def recommend(df_path, rev_count, rating, sentiment):
+    """
+    Returns the list of most popular item in the data based on its
+    rev_count = <Minimum number of total reviews, required to be in list>
+    rating =  <Minimum number of rating required to be in list>
+    sentiment = <Minimum sentiment required to be in list>
+    sentiment ranges from -1 to 1, representing most negative, neutral and positive sentiment as -1, 0, 1
+    """
     df = pd.read_json(df_path)
     df = df.loc[:, ['asin', 'overall', 'review_count', 'reviewText_senti', 'positive_prob']]
     # df1 = df.loc[:, ['asin', 'title']].drop_duplicates().reset_index().drop('index', axis=1)
