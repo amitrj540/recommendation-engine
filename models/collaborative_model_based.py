@@ -5,6 +5,15 @@ from sklearn.decomposition import TruncatedSVD
 
 
 def train(df_path, sample_frac, idx='asin', col='reviewerID', val='positive_prob'):
+    """
+    Train TruncatedSVD model for model-based filtering.
+    
+    df_path = <path for data>
+    sample_frac = ranges from 0 to 1 (fraction of data for training model)
+    idx='asin' (pivoted table's index)
+    col='reviewerID' (pivoted table's column)
+    val='positive_prob' (pivoted table's values)
+    """
     df = pd.read_json(df_path)
     df = df.sample(frac=sample_frac)
     # Matrix with row per 'item' and column per 'user'
@@ -20,6 +29,14 @@ def train(df_path, sample_frac, idx='asin', col='reviewerID', val='positive_prob
 
 
 def recommend(product, model=None, df_path=None, sample_frac=0.05, corr_thresh=0.5):
+    """
+    Recommend product based on model.
+    product = <asin of product>
+    model=None (if None model will be trained else passed model will be used)
+    df_path=None (path for dataset)
+    sample_frac=0.05 (sampling fraction for model training)
+    corr_thresh=0.5 (correlation matrix threshols)
+    """
     if model is None:
         correlation_matrix, pivot_idx = train(df_path, sample_frac)
     else:
