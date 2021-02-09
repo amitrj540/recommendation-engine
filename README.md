@@ -75,11 +75,11 @@ The dataset is divided into two parts:
 	*	Use `cbf_data` to prepare data for content based filtering.
 	*	Use `indices` to generate index Series.
 	*	Use `cosine_sim` to generate similarity matrix.
-	*	Use `recommend` to recommend products.
+	*	Use `recommend` to get recommendations.
 6.  **Apply Model-based collaborative filtering**
 	*	Import `models.collaborative_model_based` module.
 	*	Use `train` to train the model.
-	*	Use `recommend` to get recommendation.
+	*	Use `recommend` to get recommendations.
 	
 7.  **Apply Hybrid filtering**
 	*	Combination of popularity based, content based, model-based collaborative filters resulting in a robust filter that can recommend products in most conditions even in worst condition  that is when input data is not present in model.
