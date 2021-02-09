@@ -69,15 +69,15 @@ The dataset is divided into two parts:
 	*	Generating sentiments on actual data.
 
 4.  **Apply Popularity based filtering**
-	*	Use`recommend` from  `popularity_filter` module, to get a list of most popular products.
+	*	Use`recommend` from  `recommendation_filters.popularity_filter` module, to get a list of most popular products.
 5.  **Apply Content Based filtering**
-	*	Import `content_based_filter` module.
+	*	Import `recommendation_filters.content_based_filter` module.
 	*	Use `cbf_data` to prepare data for content based filtering.
 	*	Use `indices` to generate index Series.
 	*	Use `cosine_sim` to generate similarity matrix.
 	*	Use `recommend` to recommend products.
 6.  **Apply Model-based collaborative filtering**
-	*	Import `collaborative_model_based` module.
+	*	Import `models.collaborative_model_based` module.
 	*	Use `train` to train the model.
 	*	Use `recommend` to get recommendation.
 	
