@@ -13,8 +13,8 @@ The dataset is divided into two parts:
 
 * All_Beauty.json.gz 
   This dataset contains reviews (371,345 reviews).<br>
-  **features used**<br>
-  -	overall
+  **features**<br>
+  - overall
   - verified
   - reviewerID
   - asin
@@ -26,7 +26,7 @@ The dataset is divided into two parts:
   
 * meta_All_Beauty.json.gz
   This dataset contains  metadata (32,992 products)<br>
-  **features used**<br>
+  **features**<br>
   - title
   - description
   - also_buy
@@ -52,25 +52,39 @@ The dataset is divided into two parts:
 	*	Impute missing data.
 	*	Remove noise from Data.
 	
-3.  **Perform Sentiment Analysis**
+3.  **Generating Sentiments**
 	*	Data Preperation
 		-	Remove unwanted characters (eg. ",.[]() etc.) and HTML tags (if present)
 		-	Remove stopwords (eg. a an the in if etc.)
 		-	Normalize the data by stemming (*PorterStemmer* is used here)
 		-	Vectorize the data (*CountVectorizer* is used here)
 		-	Scale the data if required.
-	*	Model Building
-		-	Use Binary Classification model for classifying +ve and -ve words
+		-	Sampling data for training and testing purposes.
+	*	Building Model
+		-	Use Classification model for classifying positive, negative and neutral words.
 		-	Train the model on Train data.
-	* Model Testing
+	* 	Model Testing
 		-	Test the model against the Test data
-		-	Perform sanity check.
+	*	Building Final model
+	*	Generating sentiments on actual data.
 
-4.  **Perform Popularity based recommendation**
+4.  **Apply Popularity based filtering**
+	*	Use`recommend` from  `popularity_filter` module, to get a list of most popular products.
 5.  **Apply Content Based filtering**
+	*	Import `content_based_filter` module.
+	*	Use `cbf_data` to prepare data for content based filtering.
+	*	Use `indices` to generate index Series.
+	*	Use `cosine_sim` to generate similarity matrix.
+	*	Use `recommend` to recommend products.
 6.  **Apply Model-based collaborative filtering**
-7.  **Apply Collaberative filtering (Item-Item recommedation)**
-
+	*	Import `collaborative_model_based` module.
+	*	Use `train` to train the model.
+	*	Use `recommend` to get recommendation.
+	
+7.  **Apply Hybrid filtering**
+	*	Combination of popularity based, content based, model-based collaborative filters resulting in a robust filter that can recommend products in most condition even when input data is not present in mode.
+	*	One of many approaches is use in main.py
+	
 ---
 ### Citation
 **Justifying recommendations using distantly-labeled reviews and fined-grained aspects**
