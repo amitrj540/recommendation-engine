@@ -82,7 +82,7 @@ The dataset is divided into two parts:
 	*	Use `recommend` to get recommendations.
 	
 7.  **Apply Hybrid filtering**
-	*	Combination of popularity based, content based, model-based collaborative filters resulting in a robust filter that can recommend products in most conditions even in worst condition  that is when input data is not present in model.
+	*	Combination of popularity based, content based, model-based collaborative filters results in a very robust filter that can recommend products in most conditions even in worst condition that is when input data is not present in model.
 	*	One of many approaches is used in main.py
 	
 ---
