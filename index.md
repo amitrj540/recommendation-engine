@@ -1,3 +1,10 @@
+[![python-3.7.9](https://img.shields.io/badge/python-3.7.9-blue)](https://www.python.org/downloads/release/python-379/)
+[![scikit-learn-0.23.2](https://img.shields.io/badge/scikit--learn-0.23.2-blue)](https://pypi.org/project/scikit-learn/0.23.2/)
+[![pandas-1.1.3](https://img.shields.io/badge/pandas-1.1.3-blue)](https://pypi.org/project/pandas/1.1.3/)
+[![nltk-3.5](https://img.shields.io/badge/nltk-3.5-blue)](https://pypi.org/project/nltk/3.5/)
+[![scikit-surprise-1.1.1](https://img.shields.io/badge/scikit--surprise-1.1.1-blue)](https://pypi.org/project/scikit-surprise/1.1.1/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-yellowgreen)](https://www.gnu.org/licenses/gpl-3.0)
+
 # Recommendation Engine
 A product recommendation is just like a filtering system that seeks to predict and show the items that a user would like to purchase. It may not be entirely accurate, but if it shows what user would like then basically it is doing its job right.
 ## Dataset Information
@@ -6,8 +13,8 @@ The dataset is divided into two parts:
 
 * All_Beauty.json.gz 
   This dataset contains reviews (371,345 reviews).<br>
-  **features used**<br>
-  -	overall
+  **features**<br>
+  - overall
   - verified
   - reviewerID
   - asin
@@ -19,7 +26,7 @@ The dataset is divided into two parts:
   
 * meta_All_Beauty.json.gz
   This dataset contains  metadata (32,992 products)<br>
-  **features used**<br>
+  **features**<br>
   - title
   - description
   - also_buy
@@ -31,7 +38,7 @@ The dataset is divided into two parts:
   - price
   - asin
 
-## Project Goals
+## Project Details
 1.  **Perform EDA**
 	*	Check for missing data and other mistakes.
 	*	Gain maximum insight into the data set and its underlying structure.
@@ -45,30 +52,42 @@ The dataset is divided into two parts:
 	*	Impute missing data.
 	*	Remove noise from Data.
 	
-3.  **Perform Sentiment Analysis**
+3.  **Generating Sentiments**
 	*	Data Preperation
 		-	Remove unwanted characters (eg. ",.[]() etc.) and HTML tags (if present)
 		-	Remove stopwords (eg. a an the in if etc.)
 		-	Normalize the data by stemming (*PorterStemmer* is used here)
 		-	Vectorize the data (*CountVectorizer* is used here)
 		-	Scale the data if required.
-	*	Model Building
-		-	Use Binary Classification model for classifying +ve and -ve words
+		-	Sampling data for training and testing purposes.
+	*	Building Model
+		-	Use Classification model for classifying positive, negative and neutral words.
 		-	Train the model on Train data.
-	* Model Testing
+	* 	Model Testing
 		-	Test the model against the Test data
-		-	Perform sanity check.
+	*	Building Final model
+	*	Generating sentiments on actual data.
 
-4.  **Perform Popularity based recommendation**
+4.  **Apply Popularity based filtering**
+	*	Use`recommend` from  `popularity_filter` module, to get a list of most popular products.
 5.  **Apply Content Based filtering**
+	*	Import `content_based_filter` module.
+	*	Use `cbf_data` to prepare data for content based filtering.
+	*	Use `indices` to generate index Series.
+	*	Use `cosine_sim` to generate similarity matrix.
+	*	Use `recommend` to recommend products.
 6.  **Apply Model-based collaborative filtering**
-7.  **Apply Collaberative filtering (Item-Item recommedation)**
-
+	*	Import `collaborative_model_based` module.
+	*	Use `train` to train the model.
+	*	Use `recommend` to get recommendation.
+	
+7.  **Apply Hybrid filtering**
+	*	Combination of popularity based, content based, model-based collaborative filters resulting in a robust filter that can recommend products in most conditions even in worst condition  that is when input data is not present in model.
+	*	One of many approaches is used in main.py
+	
 ---
-
 ### Citation
 **Justifying recommendations using distantly-labeled reviews and fined-grained aspects**
 
 Jianmo Ni, Jiacheng Li, Julian McAuley
 Empirical Methods in Natural Language Processing (EMNLP), 2019
- 
