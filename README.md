@@ -3,7 +3,7 @@
 [![pandas-1.1.3](https://img.shields.io/badge/pandas-1.1.3-blue)](https://pypi.org/project/pandas/1.1.3/)
 [![nltk-3.5](https://img.shields.io/badge/nltk-3.5-blue)](https://pypi.org/project/nltk/3.5/)
 [![scikit-surprise-1.1.1](https://img.shields.io/badge/scikit--surprise-1.1.1-blue)](https://pypi.org/project/scikit-surprise/1.1.1/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-yellowgreen)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-green)](https://www.gnu.org/licenses/gpl-3.0)
 
 # Recommendation Engine
 A product recommendation is just like a filtering system that seeks to predict and show the items that a user would like to purchase. It may not be entirely accurate, but if it shows what user would like then basically it is doing its job right.
