@@ -33,7 +33,7 @@ def cosine_sim(df):
     tfidf = TfidfVectorizer(stop_words='english') 
     tfidf_mat = tfidf.fit_transform(df) #generrating vectors from text(description)
     return linear_kernel(tfidf_mat, tfidf_mat) #making a matrix which gives similarity between different procucts.one vector has similarity of all products related to that product.
-
+#Kernels are measures of similarity
 
 def recommend(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
     """
