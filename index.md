@@ -13,32 +13,30 @@ The dataset is divided into two parts:
 
 * All_Beauty.json.gz <br>
   This dataset contains reviews (371,345 reviews).<br>
-  | features | about |
-  | --- | --- |
-  | overall | rating of the product |
-  | verified | Verified review or not |
-  | reviewerID | ID of the reviewer |
-  | asin | ID of the product |
-  | reviewerName | name of the reviewer |	
-  | reviewText | text of the review |
-  | summary | summary of the review |
-  | unixReviewTime | time of the review (unix time) |
-  | vote | helpful votes of the review |
+  **features**
+	*	overall - rating of the product
+	*	verified - Verified review or not
+	*	reviewerID - ID of the reviewer
+	*	asin - ID of the product
+	*	reviewerName - name of the reviewer
+	*	reviewText - text of the review
+	*	summary - summary of the review
+	*	unixReviewTime - time of the review (unix time)
+	*	vote - helpful votes of the review
   
 * meta_All_Beauty.json.gz<br>
   This dataset contains  metadata (32,992 products)<br>
-  | features | about |
-  | --- | --- |
-  | title | name of the product |
-  | description | description of the product |
-  | also_buy | - |
-  | brand | brand name |
-  | rank | sales rank information |
-  | also_view | - |
-  | details | product and shipping details |
-  | similar_item | similar product table |
-  | price | price in US dollars (at time of crawl) |
-  | asin | ID of the product |
+  **features**
+ 	*	title - name of the product
+ 	*	description - description of the product
+ 	*	also_buy -
+ 	*	brand - brand name
+ 	*	rank - sales rank information
+ 	*	also_view -
+ 	*	details - product and shipping details
+ 	*	similar_item - similar product table
+ 	*	price - price in US dollars (at time of crawl)
+ 	*	asin - ID of the product
 
 ## Project Details
 1.  **EDA**
