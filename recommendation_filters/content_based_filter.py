@@ -20,10 +20,16 @@ def cbf_data(df_path='final.json.gz'):
 
 
 def indices(df):
+    """
+    Generate Series with itemID as index and index of itemID in the dataframe as value.
+    """
     return pd.Series(df.index, index=df['asin']).drop_duplicates()
 
 
 def cosine_sim(df):
+    """
+    Generate cosine similarity with TfidfVectorizer and linear_kernel
+    """
     tfidf = TfidfVectorizer(stop_words='english')
     tfidf_mat = tfidf.fit_transform(df)
     return linear_kernel(tfidf_mat, tfidf_mat)
@@ -31,8 +37,14 @@ def cosine_sim(df):
 
 def recommend(prod_asin, cosine_sim, indices, cbf_df, lim=5, min_rate=2):
     """
-    tuning param for price is lim=5
-    tuning param for rating is min_rate=2
+    Recommend products for prod_asin
+    cosine_sim = <cosine similarity matrix>
+    indices = <indices>
+    cbf_df = <data>
+    lim=5(default) 
+    deviation in price for similar priced item filtering
+    min_rate=2
+    minimum rating for item to be in list
     """
     df = cbf_df
     if prod_asin not in indices:
