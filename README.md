@@ -38,7 +38,7 @@ The dataset is divided into two parts:
   - price
   - asin
 
-## Project Goals
+## Project Details
 1.  **Perform EDA**
 	*	Check for missing data and other mistakes.
 	*	Gain maximum insight into the data set and its underlying structure.
