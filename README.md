@@ -39,7 +39,7 @@ The dataset is divided into two parts:
   - asin
 
 ## Project Details
-1.  **Perform EDA**
+1.  **EDA**
 	*	Check for missing data and other mistakes.
 	*	Gain maximum insight into the data set and its underlying structure.
 	*	Uncover a parsimonious model, one which explains the data with a minimum number of predictor variables.
