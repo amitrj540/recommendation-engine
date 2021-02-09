@@ -2,8 +2,11 @@ import pandas as pd
 
 
 # avg_rev_count = df['review_count'].mean()
+#790
 # avg_rating = df['overall'].mean()
+#4.098
 # avg_sentiment = df['reviewText_senti'].mean()
+#0.44
 def recommend(df_path, rev_count, rating, sentiment):
     df = pd.read_json(df_path)
     df = df.loc[:, ['asin', 'overall', 'review_count', 'reviewText_senti', 'positive_prob']]
