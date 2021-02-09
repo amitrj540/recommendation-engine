@@ -61,8 +61,6 @@ def main():
         else:
             exit_flag = True
 
-    collaborative_item_item.train(final_df, limit=5)
-
-
+            
 if __name__ == "__main__":
     main()
